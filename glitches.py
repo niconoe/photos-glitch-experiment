@@ -53,7 +53,7 @@ def glitch_replace(img_data):
     0: JPG2000, PDF
     -: PNG
 
-    JPG remarks: 
+    JPG remarks:
         - Gimp 2.8 exports are ugly (small "flys" or loss of resolution, nothing better) => Seems much better when we remove the "progressive" option
         - LightRoom 5.6 exports: no color changes, just moved blocks
         - Flickr exports: often good!
@@ -63,18 +63,5 @@ def glitch_replace(img_data):
 
     for i in range(1, random.randint(2, 6)):
         img_data = splice_a_chunk_in_a_file(img_data)
-
-    return img_data
-
-
-def glitch_randomize(img_data):
-    """
-    Results:
-
-    -: JPG: Images are often truncated, sometimes unreadable, not really interesting artifacts.
-    0: TIF: Better results in Gimp than in Preview
-    """
-    for i in range(1, random.randint(2, 6)):
-        img_data = randomize_a_chunk_in_a_file(img_data)
 
     return img_data

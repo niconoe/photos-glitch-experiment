@@ -1,7 +1,7 @@
 import os
 import uuid
 
-from glitches import glitch_replace, glitch_randomize
+from glitches import glitch_replace
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
