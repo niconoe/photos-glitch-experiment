@@ -12,7 +12,7 @@ def get_random_start_and_end_points_in_file(file_data):
     return start_point, end_point
 
 
-def splice_a_chunk_in_a_file(file_data):
+def splice_a_chunk_in_a_file(file_data, report):
     """ Splice a chunk in a file.
     * Picks out a random chunk of the file, duplicates it several times, and then inserts that
     chunk at some other random position in the file.
@@ -21,11 +21,16 @@ def splice_a_chunk_in_a_file(file_data):
     section = file_data[start_point:end_point]
     repeated = ''
 
-    for i in range(1, random.randint(2, 6)):
+    repetitions = random.randint(2, 6)
+    for i in range(1, repetitions):
         repeated += section
 
     new_start_point, new_end_point = get_random_start_and_end_points_in_file(file_data)
     file_data = file_data[:new_start_point] + repeated + file_data[new_end_point:]
+
+    # Log what we do in the report
+    report.record_splice_operation(start_point, end_point, repetitions, new_start_point, new_end_point)
+
     return file_data
 
 
@@ -36,13 +41,7 @@ def _my_random_string(string_length):
     return random[0:string_length]
 
 
-def randomize_a_chunk_in_a_file(file_data):
-    start_point, end_point = get_random_start_and_end_points_in_file(file_data)
-
-    return file_data[:start_point] + _my_random_string(end_point - start_point) + file_data[end_point:]
-
-
-def glitch_replace(img_data):
+def glitch_replace(img_data, report):
     """ Splice a chunk, 1-5x.
 
     Transformation taken from: https://github.com/artofwhatever/glitch-art-maker.
@@ -62,6 +61,6 @@ def glitch_replace(img_data):
     """
 
     for i in range(1, random.randint(2, 6)):
-        img_data = splice_a_chunk_in_a_file(img_data)
+        img_data = splice_a_chunk_in_a_file(img_data, report)
 
     return img_data
