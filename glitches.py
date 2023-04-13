@@ -19,7 +19,7 @@ def splice_a_chunk_in_a_file(file_data, report):
     """
     start_point, end_point = get_random_start_and_end_points_in_file(file_data)
     section = file_data[start_point:end_point]
-    repeated = ''
+    repeated = b''
 
     repetitions = random.randint(2, 6)
     for i in range(1, repetitions):

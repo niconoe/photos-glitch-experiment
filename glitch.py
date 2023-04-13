@@ -11,7 +11,7 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # All JPG files in sources will be glitched !
 SOURCE_DIR = os.path.join(CURRENT_DIR, "sources")
 
-DESTINATION_DIR = os.path.join("/Users/nicolasnoe/glitch")
+DESTINATION_DIR = os.path.join("/Users/nnoe/glitch")
 NUMBER_VARIATIONS = 10
 
 
@@ -20,7 +20,7 @@ def glitch_an_image(source_image_path, number_variations, destination_dir):
     img_data = open(source_image_path, "rb").read()
     source_file_extension = os.path.splitext(source_image_path)[1]
 
-    for i in xrange(number_variations):
+    for i in range(number_variations):
         r = GlitchReport()
 
         altered_image_data = glitch_replace(img_data, r)
